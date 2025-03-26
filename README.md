@@ -1,4 +1,4 @@
-# ufpe-paradigmas
+# Paradigmas Operações Básicas para Manipulação de Listas
 
 Atividade:
 
