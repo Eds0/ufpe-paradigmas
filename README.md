@@ -1,12 +1,14 @@
 # PLP - Property-based Testing Nativo
 
-Alunos: 
-Dayvison Oliveira Silva
-Francisco Edson Gomes de Morais Júnior
+**Alunos:**  
+- Dayvison Oliveira Silva  
+- Francisco Edson Gomes de Morais Júnior
 
+---
 
-BNF baseado na linguagem imperativa II:
+## 🎯 BNF baseado na linguagem imperativa II com suporte a Property-Based Testing
 
+```bnf
 Programa ::= Comando
 
 Comando ::= Atribuicao
