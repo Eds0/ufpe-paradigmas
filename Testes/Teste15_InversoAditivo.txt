@@ -1,0 +1,4 @@
+// Propriedade: Inverso aditivo (x + (-x) = 0)
+let fun propInversoAditivo x = (x + (-x)) == 0 in
+let var _ = testConfig(10) in
+property(propInversoAditivo, int) 

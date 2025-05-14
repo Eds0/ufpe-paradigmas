@@ -1,0 +1,4 @@
+// Propriedade: Dupla negação (not(not(x)) = x)
+let fun propDuplaNegacao x = not(not(x)) == x in
+let var _ = testConfig(10) in
+property(propDuplaNegacao, boolean) 

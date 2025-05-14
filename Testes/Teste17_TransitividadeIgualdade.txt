@@ -1,0 +1,7 @@
+// Propriedade: Transitividade da igualdade (se a = b e b = c então a = c)
+let fun propTransitiva x = 
+  let var a = x, var b = x, var c = x in
+  not((a == b) and (b == c)) or (a == c)
+in
+let var _ = testConfig(10) in
+property(propTransitiva, int) 

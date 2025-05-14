@@ -1,0 +1,4 @@
+// Propriedade: Lista Vazia (lista ^^ [] = lista)
+let fun propConcatListaVazia xxs = (xxs ^^ []) == xxs in
+let var _ = testConfig(10) in
+property(propConcatListaVazia, list) 

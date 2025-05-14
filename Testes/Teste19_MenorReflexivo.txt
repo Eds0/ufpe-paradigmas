@@ -1,0 +1,4 @@
+// Propriedade: Testando se x < x + 1, ajustado de x < x para verificar se testConfig(10) executa todos os 10 testes quando não há falhas.
+let fun propMenorReflexivo x = x < (x + 1) in
+let var _ = testConfig(10) in
+property(propMenorReflexivo, int) 

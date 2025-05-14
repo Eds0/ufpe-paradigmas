@@ -1,0 +1,4 @@
+// Propriedade: Elemento absorvente da multiplicação (x * 0 = 0)
+let fun propAbsorvente x = (x * 0) == 0 in
+let var _ = testConfig(10) in
+property(propAbsorvente, int)

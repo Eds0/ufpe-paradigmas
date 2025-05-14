@@ -1,0 +1,7 @@
+// Propriedade: Distributividade da multiplicação sobre a adição (a * (b + c) = a * b + a * c)
+let fun propDistributiva x = 
+  let var a = x, var b = 5, var c = 10 in
+  (a * (b + c)) == ((a * b) + (a * c))
+in
+let var _ = testConfig(10) in
+property(propDistributiva, int) 

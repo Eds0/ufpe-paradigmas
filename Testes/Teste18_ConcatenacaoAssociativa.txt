@@ -1,0 +1,7 @@
+// Propriedade: Associatividade da concatenação de listas ((xs ^^ ys) ^^ zs = xs ^^ (ys ^^ zs))
+let fun propConcatAssociativa xs = 
+  let var ys = [1, 2], var zs = [3] in
+  ((xs ^^ ys) ^^ zs) == (xs ^^ (ys ^^ zs))
+in
+let var _ = testConfig(10) in
+property(propConcatAssociativa, list) 

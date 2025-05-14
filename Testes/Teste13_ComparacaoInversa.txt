@@ -1,0 +1,18 @@
+// Propriedade: Se a > b então b < a
+// Verifica a relação inversa entre maior que e menor que
+
+let fun propComparacao x = 
+  let var y = x + 1 in
+  let var resultado = 
+    if x > y then
+      y < x
+    else
+      if y > x then
+        x < y
+      else
+        true
+  in resultado
+in
+
+let var _ = testConfig(10) in
+property(propComparacao, int) 

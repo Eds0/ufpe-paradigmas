@@ -1,0 +1,9 @@
+// Propriedade: Lei de De Morgan - not(a and b) = not(a) or not(b)
+let fun propDeMorgan x = 
+  // Usando valor x vindo do teste e um valor fixo (true)
+  let var a = x, var b = true in
+  // A propriedade a ser verificada
+  not(a and b) == (not(a) or not(b))
+in
+let var _ = testConfig(10) in
+property(propDeMorgan, boolean) 

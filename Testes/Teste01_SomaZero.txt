@@ -1,0 +1,4 @@
+// Propriedade: Elemento identidade da soma (x + 0 = x)
+let fun propSomaZero x = (x + 0) == x in
+let var _ = testConfig(10) in
+property(propSomaZero, int) 

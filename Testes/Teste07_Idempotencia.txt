@@ -1,0 +1,7 @@
+// Propriedade: Idempotência (ord(ord(lista)) = ord(lista))
+let fun ord xxs = 
+  if xxs == [] then [] else [1]
+in
+let fun propIdemp xxs = ord(ord(xxs)) == ord(xxs) in
+let var _ = testConfig(10) in
+property(propIdemp, list) 

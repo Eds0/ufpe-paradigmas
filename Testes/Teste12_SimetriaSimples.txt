@@ -1,0 +1,14 @@
+// Propriedade: Simetria da igualdade simplificada
+// Verifica que se a = b então b = a
+
+let fun propSimetria x = 
+  // Usando dois valores iguais
+  let var a = x, var b = x in
+  
+  // Verificando a simetria (trivial, pois a e b são iguais)
+  // Se a == b então b == a (equivalente a not(a == b) or (b == a))
+  not(a == b) or (b == a)
+in
+
+let var _ = testConfig(10) in
+property(propSimetria, int) 

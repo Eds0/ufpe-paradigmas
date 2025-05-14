@@ -1,0 +1,7 @@
+// Propriedade: Associatividade da adição ((a + b) + c = a + (b + c))
+let fun propAssociatividade x = 
+  let var a = x, var b = 5, var c = 10 in
+  ((a + b) + c) == (a + (b + c)) 
+in
+let var _ = testConfig(10) in
+property(propAssociatividade, int) 

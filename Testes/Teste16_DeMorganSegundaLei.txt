@@ -1,0 +1,7 @@
+// Propriedade: Segunda Lei de De Morgan - not(a or b) = not(a) and not(b)
+let fun propDeMorganSegunda x = 
+  let var a = x, var b = false in
+  not(a or b) == (not(a) and not(b))
+in
+let var _ = testConfig(10) in
+property(propDeMorganSegunda, boolean) 

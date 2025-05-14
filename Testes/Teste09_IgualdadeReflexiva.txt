@@ -1,0 +1,5 @@
+// Propriedade: Igualdade reflexiva (a == a)
+// A propriedade mais simples possível!
+let fun propIgualdadeReflexiva x = x == x in
+let var _ = testConfig(10) in
+property(propIgualdadeReflexiva, int) 

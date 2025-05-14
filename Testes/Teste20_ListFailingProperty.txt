@@ -1,0 +1,3 @@
+let fun propAlwaysFail x = false in
+let var _ = testConfig(5) in
+property(propAlwaysFail, int) O

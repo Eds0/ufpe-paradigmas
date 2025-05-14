@@ -1,0 +1,4 @@
+// Propriedade: Elemento neutro da multiplicação (x * 1 = x)
+let fun propMultUm x = (x * 1) == x in
+let var _ = testConfig(10) in
+property(propMultUm, int) 
