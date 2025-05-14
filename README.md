@@ -6,88 +6,84 @@
 
 ---
 
-## 🎯 BNF baseado na linguagem imperativa II com suporte a Property-Based Testing
+## 🎯 BNF baseado na linguagem funcional 3 com suporte a Property-Based Testing
 
 ```bnf
-Programa ::= Comando
+Programa ::= Expressao
 
-Comando ::= Atribuicao
-          | ComandoDeclaracao
-          | While
-          | IfThenElse
-          | IO
-          | Comando ";" Comando
-          | Skip
-          | ChamadaProcedimento
-          | Property
-
-Skip ::= /* palavra reservada 'skip' */
-
-Atribuicao ::= Id ":=" Expressao
-
-Expressao ::= Valor 
-            | ExpUnaria 
-            | ExpBinaria 
+Expressao ::= Valor
+            | ExpUnaria
+            | ExpBinaria
+            | ExpDeclaracao
             | Id
+            | Aplicacao
+            | IfThenElse
+            | ExpProperty        # Nova expressão
+            | ExpTestConfig      # Nova expressão
 
-Valor ::= ValorConcreto
+Valor ::= ValorConcreto | ValorAbstrato
+
+ValorAbstrato ::= ValorFuncao
 
 ValorConcreto ::= ValorInteiro 
                 | ValorBooleano 
-                | ValorString
+                | ValorString 
+                | ValorLista
+
+ValorFuncao ::= "fn" Id Id "." Expressao
 
 ExpUnaria ::= "-" Expressao 
             | "not" Expressao 
             | "length" Expressao
+            | head(Expressao) 
+            | tail(Expressao)
+            | ExpCompreensaoLista
+
+ExpCompreensaoLista ::= Expressao Gerador | Expressao Gerador Filtro
+
+Gerador ::= "for" Id "in" Expressao
+          | "for" Id "in" Expressao [","] Gerador
+
+Filtro ::= "if" Expressao
 
 ExpBinaria ::= Expressao "+" Expressao
              | Expressao "-" Expressao
              | Expressao "*" Expressao
-             | Expressao "/" Expressao
+             | Expressao ">" Expressao
+             | Expressao "<" Expressao
              | Expressao "and" Expressao
              | Expressao "or" Expressao
              | Expressao "==" Expressao
              | Expressao "++" Expressao
+             | Expressao ".." Expressao
+             | Expressao ":" Expressao
+             | Expressao "^^" Expressao
 
-ComandoDeclaracao ::= "{" Declaracao ";" Comando "}"
+ExpDeclaracao ::= "let" DeclaracaoFuncional "in" Expressao
 
-Declaracao ::= DeclaracaoVariavel 
-             | DeclaracaoProcedimento 
-             | DeclaracaoComposta
+DeclaracaoFuncional ::= DecVariavel
+                      | DecFuncao
+                      | DecComposta
 
-DeclaracaoVariavel ::= "var" Id "=" Expressao 
+DecVariavel ::= "var" Id "=" Expressao
 
-DeclaracaoComposta ::= Declaracao "," Declaracao
+DecFuncao ::= "fun" ListId "=" Expressao
 
-DeclaracaoProcedimento ::= "proc" Id "(" [ ListaDeclaracaoParametro ] ")" "{" Comando "}"
+DecComposta ::= DeclaracaoFuncional "," DeclaracaoFuncional
 
-ListaDeclaracaoParametro ::= Tipo Id 
-                           | Tipo Id "," ListaDeclaracaoParametro
+ListId ::= Id | Id "," ListId
 
-Tipo ::= "string" | "int" | "boolean"
+Aplicacao ::= Expressao "(" ListExp ")"
 
-While ::= "while" Expressao "do" Comando
+ListExp ::= Expressao | Expressao "," ListExp
 
-IfThenElse ::= "if" Expressao "then" Comando "else" Comando
+# Novas produções para Property-Based Testing
 
-IO ::= "write" "(" Expressao ")" 
-     | "read" "(" Id ")"
+ExpProperty ::= "property" "(" Expressao "," TipoTeste ")"
 
-ChamadaProcedimento ::= "call" Id "(" [ ListaExpressao ] ")" 
+ExpTestConfig ::= "testConfig" "(" Expressao ")"
 
-ListaExpressao ::= Expressao 
-                 | Expressao "," ListaExpressao
-
--- ⬇️ Extensão para Property-Based Testing ⬇️
-
-Property ::= "property" Id "(" ListaParametroTeste ")" "{" Comando "}"
-
-ListaParametroTeste ::= ParametroTeste 
-                      | ParametroTeste "," ListaParametroTeste
-
-ParametroTeste ::= Tipo Id "from" Gerador
-
-Gerador ::= "int" 
-          | "string" 
-          | "boolean" 
-          | "range" "(" ValorInteiro "," ValorInteiro ")"
+TipoTeste ::= "int"
+            | "boolean"
+            | "list"
+            | "string"
