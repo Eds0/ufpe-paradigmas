@@ -5,6 +5,7 @@
 - Francisco Edson Gomes de Morais Júnior
 
 ---
+A gramática foi estendida com as expressões [`ExpProperty`](https://github.com/usuario/repositorio/blob/main/caminho/ExpProperty.java) e [`ExpTestConfig`](https://github.com/usuario/repositorio/blob/main/caminho/ExpTestConfig.java), conforme mostrado abaixo:
 
 ## 🎯 BNF baseado na linguagem funcional 3 com suporte a Property-Based Testing
 
